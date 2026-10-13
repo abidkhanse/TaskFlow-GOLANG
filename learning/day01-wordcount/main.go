@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"strings"
 )
 
 func main() {
@@ -19,8 +20,22 @@ func main() {
 		return
 	}
 
+	// Display content of the file and its size
 	fmt.Println("File content:" + string(data))
 	fmt.Println("File has ", len(data), "bytes")
+
+	// Split the content into words and count them
+	words := strings.Fields(string(data))
+	fmt.Println("Word count ", len(words))
+	fmt.Println("First word", words[0])
+	fmt.Println("Last Word ", words[len(words)-1])
+
+	counts := make(map[string]int)
+	for _, word := range words {
+		counts[word]++
+	}
+	fmt.Println("Word counts:", counts)
+
 }
 
 /*
